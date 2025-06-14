@@ -10,12 +10,13 @@ body {
 }
 
 .container {
+  position: relative;
   background: #fff;
   padding: 2em;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
 }
 
@@ -36,14 +37,27 @@ h1 {
   margin-bottom: 1em;
 }
 
-.locale {
-  margin-bottom: 1em;
+.actions button {
+  font-size: 1.1em;
+  padding: 0.8em 1.2em;
+}
+
+.options label {
+  display: block;
+  margin: 0.25em 0;
+}
+
+
+.locale-toggle {
+  position: absolute;
+  top: 1em;
+  right: 1em;
 }
 
 button {
-  background: #2c64e3;
-  color: #fff;
-  border: none;
+  background: #fff;
+  color: #2c64e3;
+  border: 2px solid #2c64e3;
   padding: 0.6em 1em;
   border-radius: 4px;
   cursor: pointer;
@@ -52,11 +66,12 @@ button {
 }
 
 button:hover {
-  background: #2456c0;
+  background: #e8f0ff;
 }
 
 button.active {
-  background: #1b49a5;
+  background: #2c64e3;
+  color: #fff;
 }
 
 .result input {

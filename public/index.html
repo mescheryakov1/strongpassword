@@ -9,10 +9,7 @@
 </head>
 <body>
   <div id="app" class="container">
-    <div class="locale">
-      <button @click="lang='ru'" :class="{active: lang==='ru'}">Русский</button>
-      <button @click="lang='en'" :class="{active: lang==='en'}">English</button>
-    </div>
+    <button class="locale-toggle" @click="toggleLang">{{ lang === 'ru' ? 'RU' : 'EN' }}</button>
     <h1><span class="lock">🔒</span> {{ t.title }}</h1>
     <div class="length">
       <label>{{ t.length }}</label>
@@ -32,7 +29,6 @@
     <div class="result">
       <input :type="masked ? 'password' : 'text'" v-model="password" readonly :placeholder="t.placeholder"/>
       <button @click="copyPassword">{{ t.copy }}</button>
-      <button @click="generatePassword">{{ t.createNew }}</button>
       <button @click="toggleMask">{{ masked ? t.show : t.hide }}</button>
       <div v-if="countdown > 0" class="timer">{{ t.visible }} {{ countdown }} {{ t.seconds }}</div>
     </div>

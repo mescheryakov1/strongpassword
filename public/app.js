@@ -20,7 +20,6 @@ createApp({
           useSpecial: 'Использовать спецсимволы',
           excludeSimilar: 'Исключить похожие символы',
           create: 'Создать пароль',
-          createNew: 'Создать новый пароль',
           copy: 'Копировать',
           show: 'Показать',
           hide: 'Скрыть',
@@ -35,7 +34,6 @@ createApp({
           useSpecial: 'Use special characters',
           excludeSimilar: 'Exclude similar characters',
           create: 'Create Password',
-          createNew: 'Create New Password',
           copy: 'Copy',
           show: 'Show',
           hide: 'Hide',
@@ -91,6 +89,9 @@ createApp({
       if (!this.masked && this.countdown === 0) {
         this.restartTimer();
       }
+    },
+    toggleLang() {
+      this.lang = this.lang === 'ru' ? 'en' : 'ru';
     }
   }
 }).mount('#app');
