@@ -11,25 +11,29 @@
   <div id="app" class="container">
     <button class="locale-toggle" @click="toggleLang">{{ lang === 'ru' ? 'RU' : 'EN' }}</button>
     <h1><span class="lock">🔒</span> {{ t.title }}</h1>
-    <div class="length">
-      <label>{{ t.length }}</label>
-      <button @click="setLength(8)" :class="{active: length===8}">8</button>
-      <button @click="setLength(10)" :class="{active: length===10}">10</button>
-      <button @click="setLength(12)" :class="{active: length===12}">12</button>
-      <button @click="setLength(16)" :class="{active: length===16}">16</button>
-    </div>
-    <div class="options">
-      <label><input type="checkbox" v-model="useDigits"> {{ t.useDigits }}</label>
-      <label><input type="checkbox" v-model="useSpecial"> {{ t.useSpecial }}</label>
-      <label><input type="checkbox" v-model="excludeSimilar"> {{ t.excludeSimilar }}</label>
+    <div class="settings">
+      <div class="length">
+        <label>{{ t.length }}</label>
+        <button @click="setLength(8)" :class="{active: length===8}">8</button>
+        <button @click="setLength(10)" :class="{active: length===10}">10</button>
+        <button @click="setLength(12)" :class="{active: length===12}">12</button>
+        <button @click="setLength(16)" :class="{active: length===16}">16</button>
+      </div>
+      <div class="options">
+        <label><input type="checkbox" v-model="useDigits"> {{ t.useDigits }}</label>
+        <label><input type="checkbox" v-model="useSpecial"> {{ t.useSpecial }}</label>
+        <label><input type="checkbox" v-model="excludeSimilar"> {{ t.excludeSimilar }}</label>
+      </div>
     </div>
     <div class="actions">
       <button @click="generatePassword">{{ t.create }}</button>
     </div>
     <div class="result">
-      <input :type="masked ? 'password' : 'text'" v-model="password" readonly :placeholder="t.placeholder"/>
+      <div class="password-wrapper">
+        <input :type="masked ? 'password' : 'text'" v-model="password" readonly :placeholder="t.placeholder" />
+        <button class="toggle-eye" @click="toggleMask">👁</button>
+      </div>
       <button @click="copyPassword">{{ t.copy }}</button>
-      <button @click="toggleMask">{{ masked ? t.show : t.hide }}</button>
       <div v-if="countdown > 0" class="timer">{{ t.visible }} {{ countdown }} {{ t.seconds }}</div>
     </div>
   </div>
