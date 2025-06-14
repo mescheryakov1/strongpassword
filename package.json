@@ -1,0 +1,13 @@
+{
+  "name": "strongpassword",
+  "version": "1.0.0",
+  "description": "strong passwords generation site",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
