@@ -86,7 +86,10 @@ createApp({
     },
     toggleMask() {
       this.masked = !this.masked;
-      if (!this.masked && this.countdown === 0) {
+      if (this.masked) {
+        clearInterval(this.timer);
+        this.countdown = 0;
+      } else {
         this.restartTimer();
       }
     },
