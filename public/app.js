@@ -10,8 +10,46 @@ createApp({
       password: '',
       masked: false,
       countdown: 0,
-      timer: null
+      timer: null,
+      lang: 'ru',
+      translations: {
+        ru: {
+          title: 'Генератор сложных паролей',
+          length: 'Длина пароля:',
+          useDigits: 'Использовать цифры',
+          useSpecial: 'Использовать спецсимволы',
+          excludeSimilar: 'Исключить похожие символы',
+          create: 'Создать пароль',
+          createNew: 'Создать новый пароль',
+          copy: 'Копировать',
+          show: 'Показать',
+          hide: 'Скрыть',
+          visible: 'Виден ещё',
+          seconds: 'сек.',
+          placeholder: 'Пароль'
+        },
+        en: {
+          title: 'Strong Password Generator',
+          length: 'Password length:',
+          useDigits: 'Use digits',
+          useSpecial: 'Use special characters',
+          excludeSimilar: 'Exclude similar characters',
+          create: 'Create Password',
+          createNew: 'Create New Password',
+          copy: 'Copy',
+          show: 'Show',
+          hide: 'Hide',
+          visible: 'Visible for',
+          seconds: 'seconds',
+          placeholder: 'Password'
+        }
+      }
     };
+  },
+  computed: {
+    t() {
+      return this.translations[this.lang];
+    }
   },
   methods: {
     setLength(len) {
@@ -22,7 +60,7 @@ createApp({
       const similar = /[ilLIoO0]/g;
       let chars = letters + letters.toUpperCase();
       if (this.useDigits) chars += '0123456789';
-      if (this.useSpecial) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+      if (this.useSpecial) chars += '!@#$^&*()_+-=[]{}|<>?';
       if (this.excludeSimilar) chars = chars.replace(similar, '');
       let result = '';
       for (let i = 0; i < this.length; i++) {

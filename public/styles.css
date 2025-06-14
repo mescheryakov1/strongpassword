@@ -36,6 +36,10 @@ h1 {
   margin-bottom: 1em;
 }
 
+.locale {
+  margin-bottom: 1em;
+}
+
 button {
   background: #2c64e3;
   color: #fff;
@@ -49,6 +53,10 @@ button {
 
 button:hover {
   background: #2456c0;
+}
+
+button.active {
+  background: #1b49a5;
 }
 
 .result input {
