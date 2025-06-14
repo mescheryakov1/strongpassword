@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Strong Password Generator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Strong Password Generator</h1>
+    <div class="length">
+      <label>Password length:</label>
+      <button @click="setLength(8)">8</button>
+      <button @click="setLength(10)">10</button>
+      <button @click="setLength(12)">12</button>
+      <button @click="setLength(16)">16</button>
+    </div>
+    <div class="options">
+      <label><input type="checkbox" v-model="useDigits"> Use digits</label>
+      <label><input type="checkbox" v-model="useSpecial"> Use special characters</label>
+      <label><input type="checkbox" v-model="excludeSimilar"> Exclude similar characters</label>
+    </div>
+    <div class="actions">
+      <button @click="generatePassword">Create Password</button>
+    </div>
+    <div v-if="password" class="result">
+      <input :type="masked ? 'password' : 'text'" v-model="password" readonly>
+      <button @click="copyPassword">Copy</button>
+      <button @click="generatePassword">Create New Password</button>
+      <button @click="toggleMask">{{ masked ? 'Show' : 'Hide' }}</button>
+      <div v-if="countdown > 0" class="timer">Visible for {{ countdown }} seconds</div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
