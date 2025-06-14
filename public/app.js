@@ -58,7 +58,7 @@ createApp({
       const similar = /[ilLIoO0]/g;
       let chars = letters + letters.toUpperCase();
       if (this.useDigits) chars += '0123456789';
-      if (this.useSpecial) chars += '!@#$^&*()_+-=[]{}|<>?';
+      if (this.useSpecial) chars += '!@#$^&*_+-=?';
       if (this.excludeSimilar) chars = chars.replace(similar, '');
       let result = '';
       for (let i = 0; i < this.length; i++) {
