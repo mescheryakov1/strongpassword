@@ -34,7 +34,7 @@
         <button class="toggle-eye" @click="toggleMask">👁</button>
       </div>
       <button @click="copyPassword">{{ t.copy }}</button>
-      <div v-if="countdown > 0" class="timer">{{ t.visible }} {{ countdown }} {{ t.seconds }}</div>
+      <div v-if="!masked && countdown > 0" class="timer">{{ t.visible }} {{ countdown }} {{ t.seconds }}</div>
     </div>
   </div>
   <script src="app.js"></script>
