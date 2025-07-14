@@ -170,3 +170,24 @@ button.active {
   font-size: 0.9em;
   color: #555;
 }
+
+.copy-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 1em;
+  transform: translateX(-50%);
+  background: #2ecc71;
+  color: #fff;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  animation: fadeout 1.5s forwards;
+  pointer-events: none;
+  font-size: 0.9em;
+}
+
+@keyframes fadeout {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -11,6 +11,7 @@ createApp({
       masked: false,
       countdown: 0,
       timer: null,
+      copied: false,
       lang: 'ru',
       translations: {
         ru: {
@@ -21,6 +22,7 @@ createApp({
           excludeSimilar: 'Исключить похожие символы',
           create: 'Создать пароль',
           copy: 'Копировать',
+          copied: 'Скопировано!',
           show: 'Показать',
           hide: 'Скрыть',
           visible: 'Виден ещё',
@@ -36,6 +38,7 @@ createApp({
           excludeSimilar: 'Exclude similar characters',
           create: 'Create Password',
           copy: 'Copy',
+          copied: 'Copied!',
           show: 'Show',
           hide: 'Hide',
           visible: 'Visible for',
@@ -101,7 +104,12 @@ createApp({
       }, 1000);
     },
     copyPassword() {
-      navigator.clipboard.writeText(this.password);
+      navigator.clipboard.writeText(this.password).then(() => {
+        this.copied = true;
+        setTimeout(() => {
+          this.copied = false;
+        }, 1500);
+      });
     },
     toggleMask() {
       this.masked = !this.masked;
