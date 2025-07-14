@@ -33,7 +33,8 @@ h1 {
 
 .length,
 .options,
-.actions {
+.actions,
+.profile {
   margin-bottom: 1em;
 }
 
@@ -183,6 +184,36 @@ button.active {
   animation: fadeout 1.5s forwards;
   pointer-events: none;
   font-size: 0.9em;
+}
+
+.note {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.tips {
+  margin-top: 1em;
+  text-align: left;
+}
+
+.tips h2 {
+  margin-bottom: 0.5em;
+}
+
+.tips ul {
+  padding-left: 1em;
+}
+
+footer {
+  margin-top: 1em;
+  font-size: 0.9em;
+}
+
+footer a {
+  color: #2c64e3;
+  text-decoration: none;
+  margin: 0 0.3em;
 }
 
 @keyframes fadeout {
