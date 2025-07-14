@@ -10,7 +10,11 @@
 </head>
 <body>
   <div id="app" class="container">
-    <button class="locale-toggle" @click="toggleLang">{{ lang.toUpperCase() }}</button>
+    <div class="locale-switch">
+      <button v-for="l in langs" :key="l" @click="setLang(l)" :class="{active: lang === l}">
+        {{ l.toUpperCase() }}
+      </button>
+    </div>
     <h1><span class="lock">🔒</span> {{ t.title }}</h1>
     <div class="settings">
       <div class="length">
@@ -23,7 +27,6 @@
       <div class="profile">
         <label>{{ t.profile }}
           <select v-model="profile" @change="applyProfile">
-            <option value=""></option>
             <option value="social">{{ t.profileSocial }}</option>
             <option value="bank">{{ t.profileBank }}</option>
             <option value="gov">{{ t.profileGov }}</option>
