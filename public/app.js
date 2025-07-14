@@ -14,7 +14,7 @@ createApp({
       copied: false,
       lang: 'ru',
       langs: ['ru','en','es','zh'],
-      profile: '',
+      profile: 'social',
       translations: {
         ru: {
           title: 'Генератор сложных паролей',
@@ -149,6 +149,9 @@ createApp({
       return `strength-${this.strength}`;
     }
   },
+  created() {
+    this.applyProfile();
+  },
   methods: {
     setLength(len) {
       this.length = len;
@@ -213,9 +216,8 @@ createApp({
         this.restartTimer();
       }
     },
-    toggleLang() {
-      const idx = this.langs.indexOf(this.lang);
-      this.lang = this.langs[(idx + 1) % this.langs.length];
+    setLang(l) {
+      this.lang = l;
     }
   }
 }).mount('#app');

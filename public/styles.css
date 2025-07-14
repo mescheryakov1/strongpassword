@@ -56,10 +56,13 @@ h1 {
 }
 
 
-.locale-toggle {
+.locale-switch {
   position: absolute;
   top: 1em;
   right: 1em;
+}
+
+.locale-switch button {
   font-size: 0.5em;
   padding: 0.3em 0.5em;
 }
