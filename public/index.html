@@ -45,6 +45,7 @@
       </div>
       <button @click="copyPassword">{{ t.copy }}</button>
       <div class="timer" :class="{ hidden: masked || countdown === 0 }">{{ t.visible }} {{ countdown }} {{ t.seconds }}</div>
+      <div class="copy-toast" v-if="copied">{{ t.copied }}</div>
     </div>
   </div>
   <script src="app.js"></script>
