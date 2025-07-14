@@ -25,7 +25,8 @@ createApp({
           hide: 'Скрыть',
           visible: 'Виден ещё',
           seconds: 'сек.',
-          placeholder: 'Пароль'
+          placeholder: 'Пароль',
+          strengths: ['Очень слабый', 'Слабый', 'Нормальный', 'Хороший', 'Отличный']
         },
         en: {
           title: 'Strong Password Generator',
@@ -39,7 +40,8 @@ createApp({
           hide: 'Hide',
           visible: 'Visible for',
           seconds: 'seconds',
-          placeholder: 'Password'
+          placeholder: 'Password',
+          strengths: ['Very Weak', 'Weak', 'Normal', 'Good', 'Excellent']
         }
       }
     };
@@ -47,6 +49,23 @@ createApp({
   computed: {
     t() {
       return this.translations[this.lang];
+    },
+    strength() {
+      if (!this.password) return 0;
+      const len = this.password.length;
+      let lenScore = 0;
+      if (len >= 16) lenScore = 4;
+      else if (len >= 12) lenScore = 3;
+      else if (len >= 10) lenScore = 2;
+      else if (len >= 8) lenScore = 1;
+      const score = typeof zxcvbn === 'function' ? zxcvbn(this.password).score : 0;
+      return Math.max(lenScore, score) + 1;
+    },
+    strengthLabel() {
+      return this.t.strengths[this.strength - 1] || '';
+    },
+    strengthClass() {
+      return `strength-${this.strength}`;
     }
   },
   methods: {

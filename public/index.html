@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
 </head>
 <body>
   <div id="app" class="container">
@@ -32,6 +33,12 @@
       <div class="password-wrapper">
         <input :type="masked ? 'password' : 'text'" v-model="password" readonly :placeholder="t.placeholder" />
         <button class="toggle-eye" @click="toggleMask">👁</button>
+      </div>
+      <div class="strength-meter" :class="strengthClass" v-if="password">
+        <div class="bars">
+          <div v-for="n in 5" :key="n" class="bar" :class="{active: n <= strength}"></div>
+        </div>
+        <div class="strength-text">{{ strengthLabel }}</div>
       </div>
       <button @click="copyPassword">{{ t.copy }}</button>
       <div class="timer" :class="{ hidden: masked || countdown === 0 }">{{ t.visible }} {{ countdown }} {{ t.seconds }}</div>
