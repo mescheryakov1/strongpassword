@@ -10,7 +10,7 @@
 </head>
 <body>
   <div id="app" class="container">
-    <button class="locale-toggle" @click="toggleLang">{{ lang === 'ru' ? 'RU' : 'EN' }}</button>
+    <button class="locale-toggle" @click="toggleLang">{{ lang.toUpperCase() }}</button>
     <h1><span class="lock">🔒</span> {{ t.title }}</h1>
     <div class="settings">
       <div class="length">
@@ -20,14 +20,26 @@
         <button @click="setLength(12)" :class="{active: length===12}">12</button>
         <button @click="setLength(16)" :class="{active: length===16}">16</button>
       </div>
+      <div class="profile">
+        <label>{{ t.profile }}
+          <select v-model="profile" @change="applyProfile">
+            <option value=""></option>
+            <option value="social">{{ t.profileSocial }}</option>
+            <option value="bank">{{ t.profileBank }}</option>
+            <option value="gov">{{ t.profileGov }}</option>
+            <option value="email">{{ t.profileEmail }}</option>
+          </select>
+        </label>
+      </div>
       <div class="options">
-        <label><input type="checkbox" v-model="useDigits"> {{ t.useDigits }}</label>
-        <label><input type="checkbox" v-model="useSpecial"> {{ t.useSpecial }}</label>
-        <label><input type="checkbox" v-model="excludeSimilar"> {{ t.excludeSimilar }}</label>
+        <label for="digits"><input id="digits" type="checkbox" v-model="useDigits"> {{ t.useDigits }}</label>
+        <label for="special"><input id="special" type="checkbox" v-model="useSpecial"> {{ t.useSpecial }}</label>
+        <label for="similar"><input id="similar" type="checkbox" v-model="excludeSimilar"> {{ t.excludeSimilar }}</label>
       </div>
     </div>
     <div class="actions">
       <button @click="generatePassword">{{ t.create }}</button>
+      <div class="note">{{ t.localNote }}</div>
     </div>
     <div class="result">
       <div class="password-wrapper">
@@ -47,6 +59,18 @@
       <div class="timer" :class="{ hidden: masked || countdown === 0 }">{{ t.visible }} {{ countdown }} {{ t.seconds }}</div>
       <div class="copy-toast" v-if="copied">{{ t.copied }}</div>
     </div>
+    <div class="tips">
+      <h2>{{ t.tipsTitle }}</h2>
+      <ul>
+        <li><a href="https://www.wikihow.com/Make-a-Strong-Password" target="_blank">{{ t.tip1 }}</a></li>
+        <li><a href="https://support.apple.com/HT201303" target="_blank">{{ t.tip2 }}</a></li>
+      </ul>
+    </div>
+    <footer>
+      <a href="https://github.com/example/strongpassword" target="_blank">{{ t.github }}</a>
+      |
+      <a href="privacy.html" target="_blank">{{ t.privacy }}</a>
+    </footer>
   </div>
   <script src="app.js"></script>
 </body>
