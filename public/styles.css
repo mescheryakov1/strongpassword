@@ -142,3 +142,31 @@ button.active {
     margin-right: 0.5em;
   }
 }
+
+.strength-meter {
+  margin-bottom: 0.5em;
+}
+
+.strength-meter .bars {
+  display: flex;
+  margin-bottom: 0.3em;
+}
+
+.strength-meter .bar {
+  height: 6px;
+  flex: 1;
+  margin: 0 2px;
+  background-color: #ddd;
+  border-radius: 2px;
+}
+
+.strength-1 .bar.active { background: #e74c3c; }
+.strength-2 .bar.active { background: #e67e22; }
+.strength-3 .bar.active { background: #f1c40f; }
+.strength-4 .bar.active { background: #3498db; }
+.strength-5 .bar.active { background: #2ecc71; }
+
+.strength-meter .strength-text {
+  font-size: 0.9em;
+  color: #555;
+}
