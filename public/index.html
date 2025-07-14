@@ -32,7 +32,10 @@
     <div class="result">
       <div class="password-wrapper">
         <input :type="masked ? 'password' : 'text'" v-model="password" readonly :placeholder="t.placeholder" />
-        <button class="toggle-eye" @click="toggleMask">👁</button>
+        <button class="toggle-eye" @click="toggleMask"
+                :aria-pressed="!masked"
+                :aria-label="masked ? t.show : t.hide"
+                :title="masked ? t.show : t.hide">👁</button>
       </div>
       <div class="strength-meter" :class="strengthClass" v-if="password">
         <div class="bars">
